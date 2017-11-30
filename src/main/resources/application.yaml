@@ -1,0 +1,29 @@
+server:
+  port: 669
+spring:
+  thymeleaf:
+    cache: false
+    content-type: text/html
+    encoding: utf-8
+    mode: HTML5
+
+
+
+
+
+
+
+
+#web:
+#  url: "www.kjt.com"
+#  indextitle: "跨境通-进口商品购物商城，上海自贸区官方平台，原装进口海外直销，海淘首选"
+#  loginbtnlinktxt: "请登录"
+#  loginbtnxpath: "//*[@id=\"headerCtner\"]/div[1]/div/div[1]/ul/li[1]/dl/dt/a[1]"
+#  loginformtitle: "跨境通-登录"
+#  loginusrnameclass: "intxt intxt1"
+#  loginusrnameid: "input_login_name"
+#  loginpwdclass: "intxt intxt2"
+#  loginpwdid: "input_login_pwd"
+#  loginbthclass: "btn_login fl"
+#  loginbtnid: "PageLoginBtn"
+#  loginbtnlinktxt: "登录"

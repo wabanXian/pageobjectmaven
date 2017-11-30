@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="css/semantic.css"  />
+    <script type="application/javascript" src="js/jquery.min.js"></script>
+    <script type="application/javascript" src="js/semantic.js"></script>
+
+</head>
+<body>
+<!--<div class="ui sidebar inverted vertical menu ui visible sidebar">-->
+<!--<a class="item">-->
+<!--1-->
+<!--</a>-->
+<!--<a class="item">-->
+<!--2-->
+<!--</a>-->
+<!--<a class="item">-->
+<!--3-->
+<!--</a>-->
+<!--</div>-->
+<!--<div class="pusher">-->
+<!--&lt;!&ndash; Site content !&ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash;<script type="application/javascript">&ndash;&gt;-->
+<!--&lt;!&ndash;$('.ui.sidebar')&ndash;&gt;-->
+<!--&lt;!&ndash;.sidebar('toggle')&ndash;&gt;-->
+<!--&lt;!&ndash;;&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+<div class="ui grid">
+    <div class="four wide column">
+        <div class="ui vertical fluid tabular menu">
+            <a class="item active" href="/Im">
+                Bio+
+            </a>
+
+            <a class="item" onclick="">
+                Pics
+            </a>
+            <a class="item">
+                Companies
+            </a>
+            <a class="item">
+                Links
+            </a>
+        </div>
+    </div>
+    <div class="twelve wide stretched column">
+        <div class="ui segment" th:text="${msg}">
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="Suite" parallel="false">
+
+    <test name="Test">
+        <groups>
+            <run>
+                <include name="TestLogin"/>
+                <exclude name="order"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="doto.TestLogin"/>
+            <methods preserve-order="true">
+                <include name="gettitle"/>
+                <include name="login"/>
+            </methods>
+        </classes>
+
+    </test>
+</suite>
