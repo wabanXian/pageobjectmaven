@@ -36,8 +36,9 @@ public class Driver {
         return operaDriver;
     }
 
-    public static WebDriver htmlUnitDriver() {
-        WebDriver htmlUnitDriver = new HtmlUnitDriver(true);
+    public static WebDriver htmlUnitDriver(boolean sa) {
+        sa=false;
+        WebDriver htmlUnitDriver = new HtmlUnitDriver(sa);
         return htmlUnitDriver;
     }
 

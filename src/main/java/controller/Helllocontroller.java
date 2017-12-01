@@ -2,12 +2,11 @@ package controller;
 
 import doto.TestLogin;
 
+import doto.TestOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import service.LoginPage;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,9 +23,24 @@ public class Helllocontroller {
 
     @RequestMapping(value = "/Im", method = RequestMethod.GET)
     public ModelAndView xx(ModelAndView modelAndView, TestLogin testLogin) throws InterruptedException {
-        LoginPage loginPage = new LoginPage();
-        testLogin.gettitle();
-        modelAndView.addObject("msg", "");
+        if (testLogin.gettitle()==true){
+            modelAndView.addObject("msg", "ok");
+        }
+        else{
+            modelAndView.addObject("msg", testLogin.resultmsg());
+        }
+        modelAndView.setViewName("hello");
+        return modelAndView;
+    }
+
+@RequestMapping(value = "/Is",method = RequestMethod.GET)
+    public ModelAndView xxs(ModelAndView modelAndView, TestOrder testOrder) throws InterruptedException {
+        if (testOrder.order()==true){
+            modelAndView.addObject("msg", "ok");
+        }
+        else{
+            modelAndView.addObject("msg", testOrder.resultmsg());
+        }
         modelAndView.setViewName("hello");
         return modelAndView;
     }

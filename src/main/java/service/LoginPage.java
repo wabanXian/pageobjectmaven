@@ -1,12 +1,12 @@
 package service;
 
 
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.core.LogbackException;
 import config.Driver;
 import domain.dxcsass;
 import domain.element;
-import groovy.util.ObservableSet;
+
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -19,7 +19,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginPage {
 
-    WebDriver webDriver = Driver.htmlUnitDriver();
+    WebDriver webDriver = Driver.htmlUnitDriver(true);
     dxcsass dxcsass = new dxcsass();
     element element;
 
@@ -28,28 +28,35 @@ public class LoginPage {
     }
 
 
-    public void gettitle() {
-
+    public boolean gettitle() {
+        boolean rel;
         element.getweburl(webDriver);
+        rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
+        if (rel == false) {
+            setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
+        }
+        return rel;
+
     }
 
     public void Login(String usrname, String password) throws InterruptedException {
         element.getweburl(webDriver);
         element.setLogin();
-        checktitle(dxcsass.getLogintitle(),"");
         element.setLoginusrname(usrname);
         element.setLoginpassword(password);
         element.setLoginbtnid();
         Thread.sleep(2000);
-        element.setExittext();
     }
 
-    public String checktitle(String string,String err){
-        err="ok";
-        if (webDriver.getTitle()!=string){
-             err="与期望的值不一样";
+    public boolean checkmsg(String str1, String str2) {
+        boolean rel = true;
+        if (str1 != str2) {
+            rel = false;
         }
-        return err;
+        return rel;
     }
 
+    @Getter
+    @Setter
+    private String err;
 }
