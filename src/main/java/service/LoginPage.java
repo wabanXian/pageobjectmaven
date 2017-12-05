@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Objects;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,7 +21,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginPage {
 
-    WebDriver webDriver = Driver.htmlUnitDriver(true);
+    WebDriver webDriver = Driver.chromedriver();
     dxcsass dxcsass = new dxcsass();
     element element;
 
@@ -32,25 +34,41 @@ public class LoginPage {
         boolean rel;
         element.getweburl(webDriver);
         rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
-        if (rel == false) {
+        if (!rel) {
             setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
+            webDriver.quit();
         }
         return rel;
-
     }
 
-    public void Login(String usrname, String password) throws InterruptedException {
+    public boolean Login(String usrname, String password) throws InterruptedException {
+        boolean rel;
         element.getweburl(webDriver);
+        Thread.sleep(2000);
+        rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
+        if (!rel) {
+            setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
+            webDriver.quit();
+        }
+        else {
         element.setLogin();
         element.setLoginusrname(usrname);
         element.setLoginpassword(password);
         element.setLoginbtnid();
         Thread.sleep(2000);
+        rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
+        if (!rel) {
+            setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
+            webDriver.quit();
+        } else {
+            webDriver.quit();
+        }}
+        return rel;
     }
 
     public boolean checkmsg(String str1, String str2) {
         boolean rel = true;
-        if (str1 != str2) {
+        if (!Objects.equals(str1, str2)) {
             rel = false;
         }
         return rel;

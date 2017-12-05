@@ -11,13 +11,15 @@ import service.OrderPage;
  */
 public class TestOrder {
     OrderPage orderPage = new OrderPage();
-    LoginPage loginPage = new LoginPage();
+
 
     public boolean order() throws InterruptedException {
         return orderPage.lloginandorder();
     }
-
+    public boolean ordret() throws InterruptedException{
+        return  orderPage.orderlogin();
+    }
     public String resultmsg() {
-        return loginPage.getErr();
+        return orderPage.getErr();
     }
 }

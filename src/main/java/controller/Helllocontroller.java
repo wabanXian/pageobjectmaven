@@ -16,32 +16,48 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class Helllocontroller {
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     public String hello() throws Exception {
         return "hello";
     }
 
     @RequestMapping(value = "/Im", method = RequestMethod.GET)
     public ModelAndView xx(ModelAndView modelAndView, TestLogin testLogin) throws InterruptedException {
-        if (testLogin.gettitle()==true){
+        if (testLogin.login()) {
             modelAndView.addObject("msg", "ok");
-        }
-        else{
+            modelAndView.addObject("mss1", "~");
+        } else {
             modelAndView.addObject("msg", testLogin.resultmsg());
+            modelAndView.addObject("mss1", "`");
         }
-        modelAndView.setViewName("hello");
+//        modelAndView = new ModelAndView("redirect:/");
+        modelAndView.setViewName("/hello");
         return modelAndView;
     }
 
-@RequestMapping(value = "/Is",method = RequestMethod.GET)
+    @RequestMapping(value = "/Is", method = RequestMethod.GET)
     public ModelAndView xxs(ModelAndView modelAndView, TestOrder testOrder) throws InterruptedException {
-        if (testOrder.order()==true){
+        if (testOrder.order()) {
             modelAndView.addObject("msg", "ok");
-        }
-        else{
+            modelAndView.addObject("mss2", "~");
+        } else {
             modelAndView.addObject("msg", testOrder.resultmsg());
+            modelAndView.addObject("mss2", "`");
         }
-        modelAndView.setViewName("hello");
+        modelAndView.setViewName("/hello");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/Iss", method = RequestMethod.GET)
+    public ModelAndView xxss(ModelAndView modelAndView, TestOrder testOrder) throws InterruptedException {
+        if (testOrder.ordret()) {
+            modelAndView.addObject("msg", "ok");
+            modelAndView.addObject("mss3", "~");
+        } else {
+            modelAndView.addObject("msg", testOrder.resultmsg());
+            modelAndView.addObject("mss3", "`");
+        }
+        modelAndView.setViewName("/hello");
         return modelAndView;
     }
 }

@@ -8,6 +8,9 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -58,11 +61,13 @@ public class element {
      */
     @FindBy(how = How.ID, using = "CartCTNRUrl")
     private WebElement tocart;
+
     /*
     去结算页面
      */
     @FindBy(how = How.ID, using = "CanSubmitBtn")
     private WebElement tocheckout;
+
     /*
     迷你登录用户名
      */
@@ -112,6 +117,8 @@ public class element {
     private WebElement invaildorder;
 
     public void getweburl(WebDriver webDriver) {
+        webDriver.manage().window().maximize();
+
         webDriver.get(dxcsass.getWeburl());
     }
 
@@ -155,7 +162,7 @@ public class element {
         miniusrname.sendKeys(miniusrmane);
     }
 
-    public void setpassword(String minipassword) {
+    public void setminipassword(String minipassword) {
         minipasswords.sendKeys(minipassword);
     }
 

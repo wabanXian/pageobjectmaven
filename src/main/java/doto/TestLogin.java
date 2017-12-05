@@ -2,6 +2,7 @@ package doto;
 
 
 import domain.dxcsass;
+import org.testng.annotations.Test;
 import service.LoginPage;
 
 /**
@@ -10,16 +11,13 @@ import service.LoginPage;
  * Date: 2017/11/28
  * Time: 13:48
  */
+@Test
 public class TestLogin {
     LoginPage loginPage = new LoginPage();
-    dxcsass dxcsass;
+    dxcsass dxcsass = new dxcsass();
 
-    public boolean gettitle() {
-        return loginPage.gettitle();
-    }
-
-    public void login() throws InterruptedException {
-        loginPage.Login(dxcsass.getUsrname(), dxcsass.getPassword());
+    public boolean login() throws InterruptedException {
+    return    loginPage.Login(dxcsass.getUsrname(), dxcsass.getPassword());
     }
 
     public String resultmsg() {

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="css/semantic.css"  />
+    <link rel="stylesheet" href="css/semantic.css"/>
     <script type="application/javascript" src="js/jquery.min.js"></script>
     <script type="application/javascript" src="js/semantic.js"></script>
 
@@ -32,13 +32,13 @@
 <div class="ui grid">
     <div class="four wide column">
         <div class="ui vertical fluid tabular menu">
-            <a class="item active" href="/Im">
+            <a class="item  active" href="/Im">
                 Bio+
             </a>
-            <a class="item" href="/Is">
+            <a class="item " href="/Is">
                 Pics
             </a>
-            <a class="item">
+            <a class="item " href="/Iss">
                 Companies
             </a>
             <a class="item">
@@ -51,5 +51,36 @@
         </div>
     </div>
 </div>
+<div style="display: none" th:text="${mss1}" id="ms1"></div>
+<div style="display: none" th:text="${mss2}" id="ms2"></div>
+<div style="display: none" th:text="${mss3}" id="ms3"></div>
+
+<script type="application/javascript">
+    var ms1 = document.getElementById('ms1').innerHTML;
+    var ms2 = document.getElementById('ms2').innerHTML;
+    var ms3 = document.getElementById('ms3').innerHTML;
+    var c = document.getElementsByTagName('a')[0];
+    var d = document.getElementsByTagName('a')[1];
+    var e = document.getElementsByTagName('a')[2];
+    if (ms1 == "~") {
+        c.style.color = 'green'
+    }
+    else if (ms1 == "`") {
+        c.style.color = 'red'
+    }
+    if (ms2 == "~") {
+        d.style.color = 'green'
+    }
+    else if (ms2 == "`") {
+        d.style.color = 'red'
+    }
+
+    if (ms3 == "~") {
+        e.style.color = 'green'
+    }
+    else if (ms3 == "`") {
+        e.style.color = 'red'
+    }
+</script>
 </body>
 </html>
