@@ -14,7 +14,6 @@ function Login() {
             } else {
                 txt.innerHTML = str + "<br>" + "login failed";
                 loginbtn.style.color = 'red';
-
             }
         },
         error: function (err) {

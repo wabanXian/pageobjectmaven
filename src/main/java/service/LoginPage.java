@@ -47,28 +47,33 @@ public class LoginPage {
     }
 
     public boolean Login(String usrname, String password) throws InterruptedException {
-        boolean rel;
-        element.getweburl(webDriver);
-        Thread.sleep(2000);
-        rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
-        if (!rel) {
-            setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
-            webDriver.quit();
-        }
-        else {
-        element.setLogin();
-        element.setLoginusrname(usrname);
-        element.setLoginpassword(password);
-        element.setLoginbtnid();
-        Thread.sleep(2000);
-        rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
-        if (!rel) {
-            setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
-            webDriver.quit();
-        } else {
+        boolean rel = true;
+        try {
+            element.getweburl(webDriver);
+            Thread.sleep(2000);
+            rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
+            if (!rel) {
+                setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
+                webDriver.quit();
+            } else {
+                element.setLogin();
+                element.setLoginusrname(usrname);
+                element.setLoginpassword(password);
+                element.setLoginbtnid();
+                Thread.sleep(2000);
+                rel = checkmsg(webDriver.getTitle(), dxcsass.getWebtitle());
+                if (!rel) {
+                    setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
+                    webDriver.quit();
+                } else {
 
-            webDriver.quit();
-        }}
+                    webDriver.quit();
+                }
+            }
+
+        } catch (Exception e) {
+            xiaowawaConfiguration.getscreen("C://sad.jpg", webDriver);
+        }
         return rel;
     }
 

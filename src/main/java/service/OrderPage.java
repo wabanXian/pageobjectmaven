@@ -52,7 +52,8 @@ public class OrderPage {
             element.tocheckout();
             Thread.sleep(2000);
             js.executeScript("window.scrollTo(0,700)");
-            element.setPaytype();
+//            element.setPaytype();
+            element.setPaytypewithoutpic();
             Thread.sleep(2000);
             element.submitorder();
             element.nowpay();

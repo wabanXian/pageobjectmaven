@@ -92,6 +92,9 @@ public class element {
      */
     @FindBy(how = How.XPATH, using = "//*[@id=\"PayTypeListPanel\"]/div/ul/li[2]/a/img")
     private WebElement paytype;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"PayTypeListPanel\"]/div/ul/li[2]/label")
+    private WebElement paytypewithoutpic;
     /*
     提交订单
      */
@@ -118,7 +121,7 @@ public class element {
     @FindBy(how = How.ID, using = "btnInvalidOrder")
     private WebElement invaildorder;
 
-    @FindBy(how = How.XPATH,using = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[1]/a/img")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[1]/a/img")
     private WebElement screen;
 
     public void getweburl(WebDriver webDriver) {
@@ -198,7 +201,12 @@ public class element {
     public void invaildorder() {
         invaildorder.click();
     }
-    public void setScreen(){
+
+    public void setPaytypewithoutpic(){
+        paytypewithoutpic.click();
+    }
+
+    public void setScreen() {
         File file = new File("C:\\bait.jpg");
         screen.getScreenshotAs(OutputType.FILE).renameTo(file);
     }

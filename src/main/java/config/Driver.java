@@ -29,8 +29,8 @@ public class Driver {
         capabilities.setCapability(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, true);
         WebDriver chromeDriver;
         ChromeOptions options=new ChromeOptions();
-//        options.addExtensions(new File("D:\\Block-image_v1.0.crx"));
-        chromeDriver= new ChromeDriver(capabilities);
+        options.addExtensions(new File("D:\\Block-image_v1.0.crx"));
+        chromeDriver= new ChromeDriver(options);
         chromeDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         chromeDriver.manage().window().maximize();
         return chromeDriver;
