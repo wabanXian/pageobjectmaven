@@ -48,6 +48,7 @@ public class OrderPage {
         } else {
             element.addcart();
             element.tocart();
+            Thread.sleep(2000);
             element.tocheckout();
             Thread.sleep(2000);
             js.executeScript("window.scrollTo(0,700)");
@@ -64,7 +65,7 @@ public class OrderPage {
             element.invaildorder();
             Thread.sleep(2000);
             webDriver.quit();
-        }
+        }webDriver.quit();
         return rel;
     }
 
@@ -101,7 +102,7 @@ public class OrderPage {
             element.invaildorder();
             Thread.sleep(2000);
             webDriver.quit();
-        }
+        }webDriver.quit();
         return rel;
     }
 

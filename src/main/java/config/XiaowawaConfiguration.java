@@ -22,7 +22,7 @@ import java.util.Date;
 public class XiaowawaConfiguration {
 
     public void getscreen(String name, WebDriver webDriver) {
-        String path = "/sc";
+        String path = "C:\\";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmm");
         String da = simpleDateFormat.format(new Date());
         TakesScreenshot takesScreenshot = (TakesScreenshot) webDriver;

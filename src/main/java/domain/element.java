@@ -2,12 +2,14 @@ package domain;
 
 
 import config.Driver;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.io.File;
 import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
@@ -116,6 +118,9 @@ public class element {
     @FindBy(how = How.ID, using = "btnInvalidOrder")
     private WebElement invaildorder;
 
+    @FindBy(how = How.XPATH,using = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[1]/a/img")
+    private WebElement screen;
+
     public void getweburl(WebDriver webDriver) {
         webDriver.manage().window().maximize();
 
@@ -192,5 +197,9 @@ public class element {
 
     public void invaildorder() {
         invaildorder.click();
+    }
+    public void setScreen(){
+        File file = new File("C:\\bait.jpg");
+        screen.getScreenshotAs(OutputType.FILE).renameTo(file);
     }
 }

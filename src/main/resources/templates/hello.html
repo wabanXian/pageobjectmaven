@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/semantic.css"/>
     <script type="application/javascript" src="js/jquery.min.js"></script>
     <script type="application/javascript" src="js/semantic.js"></script>
-
+    <script type="application/javascript" src="js/Ajax.js"></script>
 </head>
 <body>
 <!--<div class="ui sidebar inverted vertical menu ui visible sidebar">-->
@@ -32,36 +32,35 @@
 <div class="ui grid">
     <div class="four wide column">
         <div class="ui vertical fluid tabular menu">
-            <a class="item  active" href="/Im">
-                Bio+
+            <a class="item " onclick="Login()">
+                Login
             </a>
             <a class="item " href="/Is">
-                Pics
+                Order(先登录再下单)
             </a>
             <a class="item " href="/Iss">
-                Companies
+                Order(先加购物车再登录)
             </a>
-            <a class="item">
-                Links
+            <a class="item" href="/io">
+                Screenpx
             </a>
         </div>
     </div>
     <div class="twelve wide stretched column">
-        <div class="ui segment" th:text="${msg}">
+        <div class="ui segment" th:text="${msg}" id="column">
         </div>
     </div>
 </div>
-<div style="display: none" th:text="${mss1}" id="ms1"></div>
 <div style="display: none" th:text="${mss2}" id="ms2"></div>
 <div style="display: none" th:text="${mss3}" id="ms3"></div>
-
+<div style="display: none" th:text="${mss4}" id="ms4"></div>
 <script type="application/javascript">
-    var ms1 = document.getElementById('ms1').innerHTML;
     var ms2 = document.getElementById('ms2').innerHTML;
     var ms3 = document.getElementById('ms3').innerHTML;
-    var c = document.getElementsByTagName('a')[0];
+    var ms4 = document.getElementById('ms4').innerHTML;
     var d = document.getElementsByTagName('a')[1];
     var e = document.getElementsByTagName('a')[2];
+    var f = document.getElementsByTagName('a')[3];
     if (ms1 == "~") {
         c.style.color = 'green'
     }
@@ -79,6 +78,13 @@
         e.style.color = 'green'
     }
     else if (ms3 == "`") {
+        e.style.color = 'red'
+    }
+
+    if (ms4 == "~") {
+        e.style.color = 'green'
+    }
+    else if (ms4 == "`") {
         e.style.color = 'red'
     }
 </script>

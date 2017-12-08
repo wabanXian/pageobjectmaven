@@ -2,14 +2,18 @@ package service;
 
 
 import config.Driver;
+import config.XiaowawaConfiguration;
 import domain.dxcsass;
 import domain.element;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
 import java.util.Objects;
 
 
@@ -23,6 +27,7 @@ public class LoginPage {
 
     WebDriver webDriver = Driver.chromedriver();
     dxcsass dxcsass = new dxcsass();
+    XiaowawaConfiguration xiaowawaConfiguration;
     element element;
 
     {
@@ -61,6 +66,7 @@ public class LoginPage {
             setErr("与期望结果不一致 :" + " we need : " + dxcsass.getWebtitle() + " but found:  " + webDriver.getTitle());
             webDriver.quit();
         } else {
+
             webDriver.quit();
         }}
         return rel;

@@ -1,11 +1,14 @@
 package controller;
 
+
 import doto.TestLogin;
 
 import doto.TestOrder;
+import doto.Testscr;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -22,17 +25,13 @@ public class Helllocontroller {
     }
 
     @RequestMapping(value = "/Im", method = RequestMethod.GET)
-    public ModelAndView xx(ModelAndView modelAndView, TestLogin testLogin) throws InterruptedException {
+    @ResponseBody
+    public boolean xx(TestLogin testLogin) throws InterruptedException {
+        boolean result = false;
         if (testLogin.login()) {
-            modelAndView.addObject("msg", "ok");
-            modelAndView.addObject("mss1", "~");
-        } else {
-            modelAndView.addObject("msg", testLogin.resultmsg());
-            modelAndView.addObject("mss1", "`");
+            result = true;
         }
-//        modelAndView = new ModelAndView("redirect:/");
-        modelAndView.setViewName("/hello");
-        return modelAndView;
+        return result;
     }
 
     @RequestMapping(value = "/Is", method = RequestMethod.GET)
@@ -56,6 +55,19 @@ public class Helllocontroller {
         } else {
             modelAndView.addObject("msg", testOrder.resultmsg());
             modelAndView.addObject("mss3", "`");
+        }
+        modelAndView.setViewName("/hello");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/io", method = RequestMethod.GET)
+    public ModelAndView xsxss(ModelAndView modelAndView, Testscr testscr) throws Exception {
+        if (testscr.sc()) {
+            modelAndView.addObject("msg", "ok");
+            modelAndView.addObject("mss4", "~");
+        } else {
+            modelAndView.addObject("msg", testscr.resultmsg());
+            modelAndView.addObject("mss4", "`");
         }
         modelAndView.setViewName("/hello");
         return modelAndView;

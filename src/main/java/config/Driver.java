@@ -3,6 +3,7 @@ package config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -11,6 +12,7 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 
@@ -25,7 +27,10 @@ public class Driver {
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, true);
-        WebDriver chromeDriver = new ChromeDriver(capabilities);
+        WebDriver chromeDriver;
+        ChromeOptions options=new ChromeOptions();
+//        options.addExtensions(new File("D:\\Block-image_v1.0.crx"));
+        chromeDriver= new ChromeDriver(capabilities);
         chromeDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         chromeDriver.manage().window().maximize();
         return chromeDriver;
