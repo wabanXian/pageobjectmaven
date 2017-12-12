@@ -1,7 +1,6 @@
 package domain;
 
 
-import config.Driver;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +8,8 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+
 import java.io.File;
-import java.sql.Time;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -31,6 +29,7 @@ public class element {
     @FindBy(how = How.LINK_TEXT, using = "请登录")
     @CacheLookup
     public WebElement login;
+
     /*
     用户名输入框
      */
@@ -58,6 +57,11 @@ public class element {
      */
     @FindBy(how = How.XPATH, using = "//*[@id=\"main\"]/div/div[1]/div[2]/div[1]/div[2]/div[4]/ul/li/div/a[1]")
     private WebElement addcart;
+    /*
+    购物车数量
+     */
+    @FindBy(how = How.XPATH, using = "//*[@id=\"CartCTNR\"]/p/em")
+    private WebElement cartnum;
     /*
     去购物车
      */
@@ -123,10 +127,64 @@ public class element {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"main\"]/div/div[1]/div[2]/div[2]/div[1]/a/img")
     private WebElement screen;
+    /*
+    msite首页“我的”按钮
+     */
+    @FindBy(how = How.XPATH, using = "/html/body/footer/ul/li[5]/a/span")
+    @CacheLookup
+    private WebElement my;
+    /*
+    msite登录用户名
+     */
+    @FindBy(how = How.ID, using = "phoneNumId")
+    private WebElement msiteloginusrname;
+    /*
+    msite登录密码
+     */
+    @FindBy(how = How.ID, using = "pwdId")
+    private WebElement msiteloginpassword;
+
+    /*
+    msite登录按钮
+     */
+    @FindBy(how = How.ID, using = "loginBtn")
+    private WebElement mlogin;
+    /*
+    msite立即购买按钮
+     */
+    @FindBy(how = How.ID, using = "goCheckout")
+    private WebElement mtocheckout;
+
+    /*
+    msite提交订单
+     */
+    @FindBy(how = How.LINK_TEXT, using = "提交订单")
+    private WebElement msubmitorder;
+
+    /*
+    msite立即支付
+     */
+    @FindBy(how = How.LINK_TEXT, using = "立即支付")
+    private WebElement mpayclick;
+    /*
+    msite我的订单
+     */
+    @FindBy(how = How.XPATH, using = "/html/body/div[3]/div[2]/ul/li[1]/a/em")
+    private WebElement mgetorder;
+    /*
+    msite作废订单
+     */
+    @FindBy(how = How.LINK_TEXT, using = "作废订单")
+    private WebElement mvoidorder;
+
+    @FindBy(how = How.ID, using = "cancleOrder")
+    private WebElement mcancleOrder;
+
+    @FindBy(how = How.LINK_TEXT, using = "丢掉")
+    private WebElement mthrowssa;
 
     public void getweburl(WebDriver webDriver) {
         webDriver.manage().window().maximize();
-
         webDriver.get(dxcsass.getWeburl());
     }
 
@@ -156,6 +214,10 @@ public class element {
 
     public void addcart() {
         addcart.click();
+    }
+
+    public String setCartnum() {
+        return cartnum.getText();
     }
 
     public void tocart() {
@@ -202,12 +264,61 @@ public class element {
         invaildorder.click();
     }
 
-    public void setPaytypewithoutpic(){
+    public void setPaytypewithoutpic() {
         paytypewithoutpic.click();
     }
 
     public void setScreen() {
         File file = new File("C:\\bait.jpg");
         screen.getScreenshotAs(OutputType.FILE).renameTo(file);
+    }
+
+    public void getmsiteurl(WebDriver webDriver) {
+        webDriver.manage().window().maximize();
+        webDriver.get(dxcsass.getMsiteurl());
+    }
+
+    public void setMy() {
+        my.click();
+    }
+
+    public void setMsiteloginusrname(String usrnname) {
+        msiteloginusrname.sendKeys(usrnname);
+    }
+
+    public void setMsiteloginpassword(String password) {
+        msiteloginpassword.sendKeys(password);
+    }
+
+    public void setMlogin() {
+        mlogin.click();
+    }
+
+    public void setMtocheckout() {
+        mtocheckout.click();
+    }
+
+    public void setMsubmitorder() {
+        msubmitorder.click();
+    }
+
+    public void setMpayclick() {
+        mpayclick.click();
+    }
+
+    public void setMgetorder() {
+        mgetorder.click();
+    }
+
+    public void setMvoidorder() {
+        mvoidorder.click();
+    }
+
+    public void setMcancleOrder() {
+        mcancleOrder.click();
+    }
+
+    public void setMthrowssa() {
+        mthrowssa.click();
     }
 }

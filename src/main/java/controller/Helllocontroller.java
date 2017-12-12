@@ -2,14 +2,19 @@ package controller;
 
 
 import doto.TestLogin;
-
 import doto.TestOrder;
 import doto.Testscr;
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,10 +31,18 @@ public class Helllocontroller {
 
     @RequestMapping(value = "/Im", method = RequestMethod.GET)
     @ResponseBody
-    public boolean xx(TestLogin testLogin) throws InterruptedException {
-        boolean result = false;
+    public JSON xx(TestLogin testLogin) throws InterruptedException {
+        Map<String,String> map= new HashMap<>();
+         JSON result=null;
         if (testLogin.login()) {
-            result = true;
+            map.put("statuss", "fi");
+            JSONObject object = JSONObject.fromObject(map);
+          result =object;
+        } else {
+            map.put("err", testLogin.resultmsg());
+            JSONObject object = JSONObject.fromObject(map);
+            result=object;
+//            result = object;
         }
         return result;
     }
@@ -37,13 +50,8 @@ public class Helllocontroller {
     @RequestMapping(value = "/Is", method = RequestMethod.GET)
     public ModelAndView xxs(ModelAndView modelAndView, TestOrder testOrder) throws InterruptedException {
         if (testOrder.order()) {
-            modelAndView.addObject("msg", "ok");
-            modelAndView.addObject("mss2", "~");
-        } else {
-            modelAndView.addObject("msg", testOrder.resultmsg());
-            modelAndView.addObject("mss2", "`");
+
         }
-        modelAndView.setViewName("/hello");
         return modelAndView;
     }
 

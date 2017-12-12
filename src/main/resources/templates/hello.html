@@ -29,6 +29,7 @@
 <!--&lt;!&ndash;;&ndash;&gt;-->
 <!--&lt;!&ndash;</script>&ndash;&gt;-->
 
+<div class="item"><h1>Web</h1></div>
 <div class="ui grid">
     <div class="four wide column">
         <div class="ui vertical fluid tabular menu">
@@ -47,46 +48,35 @@
         </div>
     </div>
     <div class="twelve wide stretched column">
-        <div class="ui segment" th:text="${msg}" id="column">
+        <div class="ui segment" id="column">
         </div>
     </div>
 </div>
-<div style="display: none" th:text="${mss2}" id="ms2"></div>
-<div style="display: none" th:text="${mss3}" id="ms3"></div>
-<div style="display: none" th:text="${mss4}" id="ms4"></div>
-<script type="application/javascript">
-    var ms2 = document.getElementById('ms2').innerHTML;
-    var ms3 = document.getElementById('ms3').innerHTML;
-    var ms4 = document.getElementById('ms4').innerHTML;
-    var d = document.getElementsByTagName('a')[1];
-    var e = document.getElementsByTagName('a')[2];
-    var f = document.getElementsByTagName('a')[3];
-    if (ms1 == "~") {
-        c.style.color = 'green'
-    }
-    else if (ms1 == "`") {
-        c.style.color = 'red'
-    }
-    if (ms2 == "~") {
-        d.style.color = 'green'
-    }
-    else if (ms2 == "`") {
-        d.style.color = 'red'
-    }
 
-    if (ms3 == "~") {
-        e.style.color = 'green'
-    }
-    else if (ms3 == "`") {
-        e.style.color = 'red'
-    }
 
-    if (ms4 == "~") {
-        e.style.color = 'green'
-    }
-    else if (ms4 == "`") {
-        e.style.color = 'red'
-    }
-</script>
+<div class="item"><h1>Msite</h1></div>
+<div class="ui grid">
+    <div class="four wide column">
+        <div class="ui vertical fluid tabular menu">
+            <a class="item " onclick="Login()">
+                Login
+            </a>
+            <a class="item " href="/Is">
+                Order(先登录再下单)
+            </a>
+            <a class="item " href="/Iss">
+                Order(先加购物车再登录)
+            </a>
+            <a class="item" href="/io">
+                Screenpx
+            </a>
+        </div>
+    </div>
+    <div class="twelve wide stretched column">
+        <div class="ui segment" id="colum2n">
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

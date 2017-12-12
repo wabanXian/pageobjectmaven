@@ -6,11 +6,14 @@ import domain.element;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Objects;
 
@@ -24,7 +27,8 @@ public class OrderPage {
     WebDriver webDriver = Driver.chromedriver();
     dxcsass dxcsass = new dxcsass();
     JavascriptExecutor js = (JavascriptExecutor) webDriver;
-    Actions action = new Actions(webDriver);
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
+//    Actions action = new Actions(webDriver);
 
     element element;
 
@@ -39,7 +43,7 @@ public class OrderPage {
         element.setLoginusrname(dxcsass.getUsrname());
         element.setLoginpassword(dxcsass.getPassword());
         element.setLoginbtnid();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("topSearch")));
         webDriver.get("http://www.kjt.com/product/detail/260419");
         rel = checkmsg(webDriver.getTitle(), dxcsass.getProducttitle());
         if (!rel) {
@@ -47,26 +51,30 @@ public class OrderPage {
             webDriver.quit();
         } else {
             element.addcart();
-            element.tocart();
-            Thread.sleep(2000);
+            Thread.sleep(500);
+//            element.tocart();
+            js.executeScript("document.getElementById('CartCTNRUrl').click()");
+            Thread.sleep(200);
             element.tocheckout();
-            Thread.sleep(2000);
+            Thread.sleep(500);
             js.executeScript("window.scrollTo(0,700)");
 //            element.setPaytype();
             element.setPaytypewithoutpic();
-            Thread.sleep(2000);
-            element.submitorder();
+            Thread.sleep(500);
+            js.executeScript("document.getElementById('btnSubmit').click()");
             element.nowpay();
+            String handle = webDriver.getWindowHandle();
+            webDriver.switchTo().window(handle);
             element.finpay();
-            Thread.sleep(2000);
-            action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
-            action.keyDown(Keys.CONTROL).sendKeys("w").keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
+//            action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
+//            action.keyDown(Keys.CONTROL).sendKeys("w").keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
             element.voidbth();
             js.executeScript("document.getElementsByName(\'corder\')[6].checked=true");
             element.invaildorder();
-            Thread.sleep(2000);
+            wait.until(ExpectedConditions.alertIsPresent());
             webDriver.quit();
-        }webDriver.quit();
+        }
+        webDriver.quit();
         return rel;
     }
 
@@ -79,31 +87,33 @@ public class OrderPage {
             webDriver.quit();
         } else {
             element.addcart();
-            Thread.sleep(1000);
-            element.tocart();
+            Thread.sleep(500);
+           // element.tocart();
+            js.executeScript("document.getElementById('CartCTNRUrl').click()");
+            Thread.sleep(200);
             element.tocheckout();
             element.setminiusrname(dxcsass.getUsrname());
             element.setminipassword(dxcsass.getPassword());
             element.minilogin();
-            Thread.sleep(1000);
+            Thread.sleep(500);
             element.tocheckout();
-            Thread.sleep(2000);
+            Thread.sleep(500);
             js.executeScript("window.scrollTo(0,700)");
-            Thread.sleep(2000);
-            element.setPaytype();
-            Thread.sleep(2000);
-            element.submitorder();
+            element.setPaytypewithoutpic();
+            Thread.sleep(500);
+            js.executeScript("document.getElementById('btnSubmit').click()");
             element.nowpay();
+            String handle = webDriver.getWindowHandle();
+            webDriver.switchTo().window(handle);
             element.finpay();
-            Thread.sleep(2000);
-            action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
-            action.keyDown(Keys.CONTROL).sendKeys("w").keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
+//            action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
+//            action.keyDown(Keys.CONTROL).sendKeys("w").keyUp(Keys.CONTROL).sendKeys(Keys.NULL).perform();
             element.voidbth();
             js.executeScript("document.getElementsByName(\'corder\')[6].checked=true");
             element.invaildorder();
-            Thread.sleep(2000);
             webDriver.quit();
-        }webDriver.quit();
+        }
+        webDriver.quit();
         return rel;
     }
 

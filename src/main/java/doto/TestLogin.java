@@ -2,8 +2,11 @@ package doto;
 
 
 import domain.dxcsass;
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 import service.LoginPage;
+
+import java.net.MalformedURLException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,13 +14,17 @@ import service.LoginPage;
  * Date: 2017/11/28
  * Time: 13:48
  */
-@Test
+
 public class TestLogin {
     LoginPage loginPage = new LoginPage();
     dxcsass dxcsass = new dxcsass();
 
+    public void sd() throws MalformedURLException {
+        loginPage.gettitle();
+    }
+
     public boolean login() throws InterruptedException {
-    return    loginPage.Login(dxcsass.getUsrname(), dxcsass.getPassword());
+        return loginPage.Login(dxcsass.getUsrname(), dxcsass.getPassword());
     }
 
     public String resultmsg() {
