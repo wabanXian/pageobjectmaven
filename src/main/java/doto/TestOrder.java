@@ -16,9 +16,19 @@ public class TestOrder {
     public boolean order() throws InterruptedException {
         return orderPage.lloginandorder();
     }
-    public boolean ordret() throws InterruptedException{
-        return  orderPage.orderlogin();
+
+    public boolean ordret() throws InterruptedException {
+        return orderPage.orderlogin();
     }
+
+    public boolean msiteorder() throws InterruptedException {
+        return orderPage.msiteloginandorder();
+    }
+
+    public boolean msiteordert() throws InterruptedException {
+        return orderPage.msiteorderlogin();
+    }
+
     public String resultmsg() {
         return orderPage.getErr();
     }

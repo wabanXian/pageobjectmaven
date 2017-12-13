@@ -19,39 +19,39 @@ import java.io.File;
  * Time: 10:34
  */
 
-public class element {
+public class Element {
 
-    dxcsass dxcsass = new dxcsass();
+    private dxcsass dxcsass = new dxcsass();
 
     /*
        首页登录按钮
      */
     @FindBy(how = How.LINK_TEXT, using = "请登录")
     @CacheLookup
-    public WebElement login;
+    private WebElement login;
 
     /*
     用户名输入框
      */
     @FindBy(how = How.ID, using = "input_login_name")
     @CacheLookup
-    public WebElement loginusrname;
+    private WebElement loginusrname;
     /*
     密码输入框
      */
     @FindBy(how = How.ID, using = "input_login_pwd")
     @CacheLookup
-    public WebElement loginpassword;
+    private WebElement loginpassword;
     /*
     登录按钮
      */
     @FindBy(how = How.ID, using = "PageLoginBtn")
-    public WebElement loginbtnid;
+    private WebElement loginbtnid;
     /*
     退出
      */
     @FindBy(how = How.LINK_TEXT, using = "[退出]")
-    public WebElement exittext;
+    private WebElement exittext;
     /*
     加入购物车
      */
@@ -149,6 +149,9 @@ public class element {
      */
     @FindBy(how = How.ID, using = "loginBtn")
     private WebElement mlogin;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/ul/li[1]/a/em")
+    private WebElement msitesigntxt;
     /*
     msite立即购买按钮
      */
@@ -320,5 +323,9 @@ public class element {
 
     public void setMthrowssa() {
         mthrowssa.click();
+    }
+
+    public String getmsitesigntxt() {
+        return msitesigntxt.getText();
     }
 }

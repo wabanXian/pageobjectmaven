@@ -1,10 +1,9 @@
 package service;
 
 import config.Driver;
-import config.ReadColor;
 import config.XiaowawaConfiguration;
+import domain.Element;
 import domain.dxcsass;
-import domain.element;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -22,19 +21,19 @@ import java.io.File;
  * Time: 14:12
  */
 public class scrPage {
-    WebDriver webDriver = Driver.chromedriver();
-    domain.dxcsass dxcsass = new dxcsass();
-    domain.element element;
+    private WebDriver webDriver = Driver.chromedriver();
+    private domain.dxcsass dxcsass = new dxcsass();
+    private Element Element;
     XiaowawaConfiguration xiaowawaConfiguration=new XiaowawaConfiguration();
 
     {
-        element = PageFactory.initElements(webDriver, domain.element.class);
+        Element = PageFactory.initElements(webDriver, Element.class);
     }
 
     public boolean getscrss() throws Exception {
         boolean rel = true;
         webDriver.get(dxcsass.getProducturl());
-        element.setScreen();
+        Element.setScreen();
         Thread.sleep(2000);
         File file = new File("C:\\bait.jpg");
         BufferedImage bi = null;

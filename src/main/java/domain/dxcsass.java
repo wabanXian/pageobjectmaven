@@ -25,8 +25,12 @@ public class dxcsass {
     @Getter
     private String producturl = "http://www.kjt.com/product/detail/260419";
     @Getter
+    private String msiteproducturl = "http://m.kjt.com/product/detail/260419";
+    @Getter
     private String producttitle = "跨境通-t测试商品，请勿下单，下单无效(粉紫色)";
     @Getter
-    private String msitetitle = "";
+    private String msitetitle = "跨境通商城";
+    @Getter
+    private String msitesigntxt = "签到";
 
 }

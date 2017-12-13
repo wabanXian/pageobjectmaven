@@ -15457,7 +15457,7 @@ ol.ui.horizontal.list li:before,
   z-index: 2 !important;
 }
 
-/* Make sure hovered element is on top of other reveal */
+/* Make sure hovered Element is on top of other reveal */
 
 .ui.active.reveal .visible.content,
 .ui.reveal:hover .visible.content {
@@ -26842,7 +26842,7 @@ a.ui.card:hover,
   color: #EF404A;
 }
 
-/* First element */
+/* First Element */
 
 .ui.feed > .event > .content .meta > :first-child {
   margin-left: 0em;
@@ -28562,7 +28562,7 @@ a.ui.card:hover,
      Hidden
 ---------------*/
 
-/* Initialized checkbox moves input below element
+/* Initialized checkbox moves input below Element
  to prevent manually triggering */
 
 .ui.checkbox input.hidden {

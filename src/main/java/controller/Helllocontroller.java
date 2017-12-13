@@ -2,15 +2,14 @@ package controller;
 
 
 import doto.TestLogin;
+
 import doto.TestOrder;
-import doto.Testscr;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 
 import java.util.HashMap;
@@ -29,56 +28,103 @@ public class Helllocontroller {
         return "hello";
     }
 
-    @RequestMapping(value = "/Im", method = RequestMethod.GET)
+    @RequestMapping(value = "/Login", method = RequestMethod.GET)
     @ResponseBody
     public JSON xx(TestLogin testLogin) throws InterruptedException {
-        Map<String,String> map= new HashMap<>();
-         JSON result=null;
+        Map<String, String> map = new HashMap<>();
+        JSON result = null;
         if (testLogin.login()) {
             map.put("statuss", "fi");
-            JSONObject object = JSONObject.fromObject(map);
-          result =object;
+            result = JSONObject.fromObject(map);
         } else {
             map.put("err", testLogin.resultmsg());
-            JSONObject object = JSONObject.fromObject(map);
-            result=object;
+            result = JSONObject.fromObject(map);
 //            result = object;
         }
         return result;
     }
 
-    @RequestMapping(value = "/Is", method = RequestMethod.GET)
-    public ModelAndView xxs(ModelAndView modelAndView, TestOrder testOrder) throws InterruptedException {
+    @RequestMapping(value = "/loginorder", method = RequestMethod.GET)
+    @ResponseBody
+    public JSON xxs(TestOrder testOrder) throws InterruptedException {
+        Map<String, String> map = new HashMap<>();
+        JSON result = null;
         if (testOrder.order()) {
-
+            map.put("statuss", "fi");
+            result = JSONObject.fromObject(map);
+        } else {
+            map.put("err", testOrder.resultmsg());
+            result = JSONObject.fromObject(map);
         }
-        return modelAndView;
+        return result;
     }
 
-    @RequestMapping(value = "/Iss", method = RequestMethod.GET)
-    public ModelAndView xxss(ModelAndView modelAndView, TestOrder testOrder) throws InterruptedException {
+    @RequestMapping(value = "/orderlogin", method = RequestMethod.GET)
+    @ResponseBody
+    public JSON xsxs(TestOrder testOrder) throws InterruptedException {
+        Map<String, String> map = new HashMap<>();
+        JSON result = null;
         if (testOrder.ordret()) {
-            modelAndView.addObject("msg", "ok");
-            modelAndView.addObject("mss3", "~");
+            map.put("statuss", "fi");
+            result = JSONObject.fromObject(map);
         } else {
-            modelAndView.addObject("msg", testOrder.resultmsg());
-            modelAndView.addObject("mss3", "`");
+            map.put("err", testOrder.resultmsg());
+            result = JSONObject.fromObject(map);
         }
-        modelAndView.setViewName("/hello");
-        return modelAndView;
+        return result;
     }
 
-    @RequestMapping(value = "/io", method = RequestMethod.GET)
-    public ModelAndView xsxss(ModelAndView modelAndView, Testscr testscr) throws Exception {
-        if (testscr.sc()) {
-            modelAndView.addObject("msg", "ok");
-            modelAndView.addObject("mss4", "~");
+//    @RequestMapping(value = "/io", method = RequestMethod.GET)
+//    public ModelAndView xsxss(ModelAndView modelAndView, Testscr testscr) throws Exception {
+//        if (testscr.sc()) {
+//
+//        }
+//        return modelAndView;
+//    }
+
+    @RequestMapping(value = "/msitelogin", method = RequestMethod.GET)
+    @ResponseBody
+    public JSON msitexx(TestLogin testLogin) throws InterruptedException {
+        Map<String, String> map = new HashMap<>();
+        JSON result = null;
+        if (testLogin.msitelogin()) {
+            map.put("statuss", "fi");
+            result = JSONObject.fromObject(map);
         } else {
-            modelAndView.addObject("msg", testscr.resultmsg());
-            modelAndView.addObject("mss4", "`");
+            map.put("err", testLogin.resultmsg());
+            result = JSONObject.fromObject(map);
         }
-        modelAndView.setViewName("/hello");
-        return modelAndView;
+        return result;
+    }
+
+    @RequestMapping(value = "/msiteorder", method = RequestMethod.GET)
+    @ResponseBody
+    public JSON xmsitex(TestOrder testOrder) throws InterruptedException {
+        Map<String, String> map = new HashMap<>();
+        JSON result = null;
+        if (testOrder.msiteorder()) {
+            map.put("statuss", "fi");
+            result = JSONObject.fromObject(map);
+        } else {
+            map.put("err", testOrder.resultmsg());
+            result = JSONObject.fromObject(map);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/msiteordert", method = RequestMethod.GET)
+    @ResponseBody
+    public JSON xmxsitex(TestOrder testOrder) throws InterruptedException {
+        Map<String, String> map = new HashMap<>();
+        JSON result = null;
+        if (testOrder.msiteordert()) {
+            map.put("statuss", "fi");
+            result = JSONObject.fromObject(map);
+        } else {
+            map.put("err", testOrder.resultmsg());
+            result = JSONObject.fromObject(map);
+        }
+        return result;
     }
 }
 

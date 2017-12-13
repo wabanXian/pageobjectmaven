@@ -27,6 +27,10 @@ public class TestLogin {
         return loginPage.Login(dxcsass.getUsrname(), dxcsass.getPassword());
     }
 
+    public boolean msitelogin() throws InterruptedException {
+        return loginPage.mLogin(dxcsass.getUsrname(), dxcsass.getPassword());
+    }
+
     public String resultmsg() {
         return loginPage.getErr();
     }
